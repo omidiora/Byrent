@@ -6,8 +6,8 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-around">
         <button class="btn btn-primary">HOME</button>
-        <button class="btn btn-primary">FOR RENT</button>
-        <button class="btn btn-primary">FOR SALE</button>
+        <a href="{% url  'rent' %}" class="btn btn-primary">FOR RENT</a>
+        <button   class="btn btn-primary">FOR SALE</button>
         <button class="btn btn-primary">CONTACT</button>
         <button class="btn btn-primary">FAVOURITE</button>
     </div>
@@ -23,21 +23,25 @@
 <div class="container">
     <h2>LAST HOUSES</h2>
     <div class="row">
-      {% for home in homes %}
+      
       <br>
+      {% for home in homes %}
       <div class="col-md-4">
         
         <div class="card card-body" style="width: 18rem;">
           <img src="/static/image/{{home.image}}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">{{home.description}}</p>
+           
           </div>
         </div>
        
         
       </div>
       {% endfor %}
+     
     </div>
+    <p></p>
 </div>
 
 

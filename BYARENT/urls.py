@@ -8,7 +8,7 @@ urlpatterns = [
     path('register',views.registerpage,name='register'),
     path('login',views.loginpage,name='login'),
     # path('register',RegisterList.as_view(),name='register'),
-    path('rent',RentList.as_view(),name='home'),
+    path('rent', views.RentList,name='rent'),
 
 
 

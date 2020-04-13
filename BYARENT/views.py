@@ -5,7 +5,7 @@ from .forms import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-
+from .filters import HomeFilter
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ class HomeList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['homes'] = Home.objects.all()
+        context['homes'] = Home.objects.all()[0:5]
         print('homes')
         return context
     
@@ -46,18 +46,33 @@ def loginpage(request):
     context={'form':form}
     return  render(request,'login.html',context)
     
-            
-
-class RentList(ListView):
-    model=Home
-    template_name='rent.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['homes'] = Home.objects.all()
-        print('homes')
-        return context
 
 
+def  RentList(request):
+    home=Home.objects.all()
+    myfilter=HomeFilter(request.GET,queryset=Home.objects.all())
+    orders=myfilter.qs
+    print(orders)
+    context={'myfilter':myfilter,'orders':orders,'home':home}
+    return render(request,'rent.html',context)
+    
 
-         
+
+# class RentList(ListView):
+#     model=Home
+#     template_name='rent.html'
+#     home=Home.objects.all() 
+    
+    
+
+#     def get_context_data(self, **kwargs):
+#         context = super(RentList,self).get_context_data(**kwargs)
+#         myhome=HomeFilter(request.GET,queryset=Home)
+#         myhomefilter=myhome.qs
+#         context['homes'] = Home.objects.all()
+#         context['myfilter']=myhomefilter
+#         print('homes')
+#         return context
+
+
+
