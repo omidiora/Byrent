@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-around">
+        <button class="btn btn-primary">HOME</button>
+        <button class="btn btn-primary active">FOR RENT</button>
+        <button class="btn btn-primary">FOR SALE</button>
+        <button class="btn btn-primary">CONTACT</button>
+        <button class="btn btn-primary">FAVOURITE</button>
+    </div>
+
+</div>
+
+<br>
+
+<div class="container">
+    <h2>LAST HOUSES</h2>
+    <div class="row">
+      {% for home in homes %}
+      <br>
+      <div class="col-md-4">
+        
+        <div class="card card-body" style="width: 18rem;">
+          <img src="/static/image/{{home.image}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">{{home.description}}</p>
+          </div>
+        </div>
+       
+        
+      </div>
+      {% endfor %}
+    </div>
+</div>
+
+
+<div class="container  mt-4" >
+    <h3>PARTNERSHIP</h3>
+    <div class="article"style="background-color:black;border:2px solid blue"> 
+    <img src="/static/image/b.png"   style="background: black;">
+    </div>
+
+
+</div>
+
+
+
+<footer>
+  <div class="container-fluid">
+    <div class="article1" style="background-color: blue; margin-top: 100px;color: white;">
+ <h1 class="text-center " >BYARENT</h1>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore ullam distinctio dolorum nostrum consequatur. Atque, sint voluptas. Sint velit accusamus eos, eaque accusantium eum fugit illo recusandae incidunt praesentium vero.</p>
+    </div>
+
+    
+
+
+
+  </div>
+</footer>
+
+
+
+{% endblock %}
+

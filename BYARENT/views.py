@@ -50,7 +50,7 @@ def loginpage(request):
 
 class RentList(ListView):
     model=Home
-    template_name='index.html'
+    template_name='rent.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
