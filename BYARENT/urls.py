@@ -9,6 +9,8 @@ urlpatterns = [
     path('login',views.loginpage,name='login'),
     # path('register',RegisterList.as_view(),name='register'),
     path('rent', views.RentList,name='rent'),
+    path('contact/', contactView, name='contact'),
+    path('success/', successView, name='success'),
 
 
 

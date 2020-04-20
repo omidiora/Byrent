@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BYARENT',
     'django_filters',
+    
 ]
 
 MIDDLEWARE = [
@@ -128,4 +129,6 @@ STATICFILES_DIRS=[
 MEDIA_URL='/image/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/image')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

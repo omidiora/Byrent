@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 from .models import *
 from .forms import *
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +15,7 @@ class HomeList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['homes'] = Home.objects.all()[0:5]
+        context['homes'] = Home.objects.all()[0:6]
         print('homes')
         return context
     
@@ -51,10 +51,34 @@ def loginpage(request):
 def  RentList(request):
     home=Home.objects.all()
     myfilter=HomeFilter(request.GET,queryset=Home.objects.all())
+    print(myfilter)
     orders=myfilter.qs
     print(orders)
     context={'myfilter':myfilter,'orders':orders,'home':home}
     return render(request,'rent.html',context)
+
+
+
+
+class ContactDetailView(DetailView):
+    template_name='contact.html' 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
 
