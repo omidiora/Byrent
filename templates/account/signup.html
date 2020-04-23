@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+<style>
+    .card .card-body{
+        box-shadow: 100px white ;
+    }
+</style>
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<h2 class="text-center mt-4">CREATE AN ACCOUNT</h2>
+
+<div class="container card card-body">
+
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+ 
+
+  <button type="submit" class="btn btn-primary">Create an account</button>
+</form>
+</div>
+
+  {% endblock   %}

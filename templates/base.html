@@ -25,7 +25,7 @@
           </li>
           {% else%}
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'register' %}">Sign up<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="">Sign up<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">Log in</a>
@@ -34,6 +34,20 @@
           </ul>
         </div>
       </nav>
+
+
+
+    
+      <div class="container mt-4">
+        <div class="d-flex justify-content-around">
+            <a href="{% url 'home' %}" class="btn btn-primary">HOME</a>
+            <a href="{% url  'rent' %}" class="btn btn-primary">FOR RENT</a>
+            <button   class="btn btn-primary">FOR SALE</button>
+            <a href="{% url 'contact'  %}" class="btn btn-primary">CONTACT</a>
+            <button class="btn btn-primary">FAVOURITE</button>
+        </div>
+    
+    </div>
     
     {%  block content %}
 

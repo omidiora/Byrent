@@ -5,21 +5,12 @@
 {% block content %}
 
 <br>
-<div class="container mt-4">
-    <div class="d-flex justify-content-around">
-        <button class="btn btn-primary">HOME</button>
-        <button class="btn btn-primary active">FOR RENT</button>
-        <button class="btn btn-primary">FOR SALE</button>
-        <button class="btn btn-primary">CONTACT</button>
-        <button class="btn btn-primary">FAVOURITE</button>
-    </div>
-
-</div>
 
 <br>
 <div class="container d-flex justify-content-center mt-4">
 <form action="" method="GET">
-  {{myfilter.form}}
+  <input type="search" name="p" class="form-control">
+  <br>
  <button type="submit" name="" class="btn btn-primary">Submit</button>
 </form>
 </div>
@@ -28,7 +19,9 @@
 <div class="row">
   
   <br>
-
+  {% if not request.GET.q %}
+  {%endif%}
+  
   {% for order in orders %}
   
   <div class="col-md-4">
@@ -37,6 +30,7 @@
       <img src="/static/image/{{order.image}}" class="card-img-top img-fluid" alt="...">
       <div class="card-body">
         <p class="card-text">{{order}}</p>
+        <a href="" class="btn btn-primary">Add to Cart</a>
       </div>
     </div>
   

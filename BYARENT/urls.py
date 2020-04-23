@@ -5,12 +5,11 @@ from . import views
 
 urlpatterns = [
     path('',HomeList.as_view(),name='home'),
-    path('register',views.registerpage,name='register'),
+    # path('register',views.registerpage,name='register'),
     path('login',views.loginpage,name='login'),
-    # path('register',RegisterList.as_view(),name='register'),
-    path('rent', views.RentList,name='rent'),
+    path('rent', RentListView.as_view(),name='rent'),
     path('contact/', contactView, name='contact'),
-    path('success/', successView, name='success'),
+    
 
 
 
