@@ -51,17 +51,38 @@ def loginpage(request):
     
 
 
-def  RentList(request):
-    home=Home.objects.all()
-    myfilter=HomeFilter(request.GET,queryset=Home.objects.all())
+# def  RentList(request):
+#     home=Home.objects.filter('rent')
+#     myfilter=HomeFilter(request.GET,queryset=Home.objects.all())
 
-    orders=myfilter.qs
+#     orders=myfilter.qs
 
-    context={'myfilter':myfilter,'orders':orders,'home':home}
-    return render(request,'rent.html',context)
+#     context={'myfilter':myfilter,'orders':orders,'home':home}
+#     return render(request,'rent.html',context)
 
 class RentListView(ListView):
     template_name='rent.html'
+    def get_queryset(self,*args,**kwargs):
+        qs=Home.objects.all()
+        query=HomeFilter(self.request.GET,queryset=qs)
+        # if query is not None:
+        #     qs=qs.filter(Q(name__icontains=query))
+        #     print(qs)
+        return query.qs
+  
+    def get_context_data(self,*args,**kwargs):
+        context=super(RentListView,self).get_context_data(*args,**kwargs)
+        context['orders']=Home.objects.filter(rent=True)
+        context['myfilter']=HomeFilter(self.request.GET,queryset=Home.objects.all())
+        return context
+    
+
+
+      
+
+class SaleListView(ListView):
+    template_name='sale.html'
+      
     def get_queryset(self,*args,**kwargs):
         qs=Home.objects.all()
         query=self.request.GET.get("q",None)
@@ -71,15 +92,9 @@ class RentListView(ListView):
         return qs
   
     def get_context_data(self,*args,**kwargs):
-        context=super(RentListView,self).get_context_data(*args,**kwargs)
+        context=super(SaleListView,self).get_context_data(*args,**kwargs)
         context['orders']=Home.objects.all()
         return context
-    
-
-
-      
-
-
 
 
 def contactView(request):

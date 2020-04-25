@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include("BYARENT.urls")),
     path('', include('allauth.urls')),
+    path('api/', include('BYARENT.api.urls')),
+    
 ]
 # urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 # urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

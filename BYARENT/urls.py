@@ -8,6 +8,8 @@ urlpatterns = [
     # path('register',views.registerpage,name='register'),
     path('login',views.loginpage,name='login'),
     path('rent', RentListView.as_view(),name='rent'),
+   
+    path('sale/',SaleListView.as_view(),name='sale'),
     path('contact/', contactView, name='contact'),
     
 
